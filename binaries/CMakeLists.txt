@@ -26,6 +26,7 @@ endif()
 
 if(USE_CUDA)
   caffe2_binary_target("inspect_gpu.cc")
+  target_include_directories(inspect_gpu PUBLIC "/run/media/david/data1/pytorch/torch/include")
   target_link_libraries(inspect_gpu ${CUDA_LIBRARIES})
 
 endif()

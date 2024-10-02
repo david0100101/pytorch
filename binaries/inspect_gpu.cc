@@ -24,12 +24,13 @@
 #include "caffe2/core/init.h"
 #include "caffe2/core/logging.h"
 
+
 using std::vector;
 
 C10_DECLARE_int(caffe2_log_level);
 
 int main(int argc, char** argv) {
-  caffe2::GlobalInit(&argc, &argv);
+  // caffe2::GlobalInit(&argc, &argv);
   c10::SetUsageMessage(
       "Inspects the GPUs on the current machine and prints out their details "
       "provided by cuda.");
@@ -38,11 +39,11 @@ int main(int argc, char** argv) {
   CUDA_ENFORCE(cudaGetDeviceCount(&gpu_count));
   for (int i = 0; i < gpu_count; ++i) {
     LOG(INFO) << "Querying device ID = " << i;
-    caffe2::DeviceQuery(i);
+    // caffe2::DeviceQuery(i);
   }
 
   vector<vector<bool> > access_pattern;
-  CAFFE_ENFORCE(caffe2::GetCudaPeerAccessPattern(&access_pattern));
+  // CAFFE_ENFORCE(caffe2::GetCudaPeerAccessPattern(&access_pattern));
 
   std::stringstream sstream;
   // Find topology
